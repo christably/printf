@@ -7,20 +7,20 @@
 int (*spec_get(char *s))(va_list ce, params_t *params)
 {
 	specifier_t specifiers[] = {
-		{"c", print_char},
+		{"c", chris_char},
 		{"d", print_int},
 		{"i", print_int},
 		{"s", print_string},
 		{"%", print_percent},
 		{"b", print_binary},
-		{"o", print_octal},
-		{"u", print_unsigned},
-		{"x", print_hex},
+		{"o", oct_print},
+		{"u", _unsigned},
+		{"x", hex_print},
 		{"X", print_HEX},
-		{"p", print_address},
-		{"S", print_S},
-		{"r", print_rev},
-		{"R", print_rot13},
+		{"p", print_add},
+		{"S", sprintt},
+		{"r", print_v},
+		{"R", print_rt},
 		{NULL, NULL}
 	};
 	int i = 0;
