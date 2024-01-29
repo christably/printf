@@ -61,11 +61,11 @@ int _puts(char *str);
 int _putchar(int c);
 
 /* fprint.c module */
-int print_char(va_list ce, params_t *params);
+int chris_char(va_list ce, params_t *params);
 int print_int(va_list ce, params_t *params);
 int print_string(va_list ce, params_t *params);
 int print_percent(va_list ce, params_t *params);
-int print_S(va_list ce, params_t *params);
+int sprintt(va_list ce, params_t *params);
 
 /* nmb.c module */
 char *convert(long int num, int b, int f, params_t *params);
