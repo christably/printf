@@ -1,20 +1,20 @@
 #include "main.h"
 /**
- * print_char - prints char
- * @ap: arg pointer
+ * chris_char - prints char
+ * @ce: arg pointer
  * @params: params struct
  * Return: num chars
  */
-int print_char(va_list ap, params_t *params)
+int chris_char(va_list ce, params_t *params)
 {
 	char pad_char = ' ';
-	unsigned int pad = 1, sum = 0, ch = va_arg(ap, int);
+	unsigned int pad = 1, sum = 0, ch = va_arg(ce, int);
 
-	if (params->minus_flag)
+	if (params->m_flag)
 		sum += _putchar(ch);
 	while (pad++ < params->width)
 		sum += _putchar(pad_char);
-	if (!params->minus_flag)
+	if (!params->m_flag)
 		sum += _putchar(ch);
 	return (sum);
 }
@@ -24,16 +24,16 @@ int print_char(va_list ap, params_t *params)
  * @params: paras struct
  * Return: chars printed
  */
-int print_int(va_list ap, params_t *params)
+int print_int(va_list ce, params_t *params)
 {
 	long l;
 
-	if (params->l_modifier)
-		l = va_arg(ap, long);
-	else if (params->h_modifier)
-		l = (short int)va_arg(ap, int);
+	if (params->l_mod)
+		l = va_arg(ce, long);
+	else if (params->h_mod)
+		l = (short int)va_arg(ce, int);
 	else
-		l = (int)va_arg(ap, int);
+		l = (int)va_arg(ce, int);
 	return (print_number(convert(l, 10, 0, params), params));
 }
 /**
@@ -42,9 +42,9 @@ int print_int(va_list ap, params_t *params)
  * @params: params struct
  * Return: chars printed
  */
-int print_string(va_list ap, params_t *params)
+int print_string(va_list ce, params_t *params)
 {
-	char *str = va_arg(ap, char *), pad_char = ' ';
+	char *str = va_arg(ce, char *), pad_char = ' ';
 	unsigned int pad = 0, sum = 0, i = 0, j;
 
 	(void)params;
@@ -56,7 +56,7 @@ int print_string(va_list ap, params_t *params)
 	if (params->precision < pad)
 		j = pad = params->precision;
 
-	if (params->minus_flag)
+	if (params->m_flag)
 	{
 		if (params->precision != UINT_MAX)
 			for (i = 0; i < pad; i++)
@@ -66,7 +66,7 @@ int print_string(va_list ap, params_t *params)
 	}
 	while (j++ < params->width)
 		sum += _putchar(pad_char);
-	if (!params->minus_flag)
+	if (!params->m_flag)
 	{
 		if (params->precision != UINT_MAX)
 			for (i = 0; i < pad; i++)
@@ -79,25 +79,25 @@ int print_string(va_list ap, params_t *params)
 
 /**
  * print_percent - prints string
- * @ap: args pointer
+ * @ce: args pointer
  * @params: params struct
  * Return: chars printed
  */
-int print_percent(va_list ap, params_t *params)
+int print_percent(va_list ce, params_t *params)
 {
-	(void)ap;
+	(void)ce;
 	(void)params;
 	return (_putchar('%'));
 }
 /**
- * print_S - c format spf
- * @ap: args pointer
+ * sprintt - c format spf
+ * @ce: args pointer
  * @params: params struct
  * Return: chars printed
  */
-int print_S(va_list ap, params_t *params)
+int sprintt(va_list ce, params_t *params)
 {
-	char *str = va_arg(ap, char *);
+	char *str = va_arg(ce, char *);
 	char *hex;
 	int sum = 0;
 
