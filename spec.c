@@ -44,7 +44,7 @@ int (*spec_get(char *s))(va_list ce, params_t *params)
  */
 int printf_get(char *s, va_list ce, params_t *params)
 {
-	int (*f)(va_list, params_t *) = get_specifier(s);
+	int (*f)(va_list, params_t *) = spec_get(s);
 
 	if (f)
 		return (f(ce, params));
@@ -93,10 +93,10 @@ int get_modifier(char *s, params_t *params)
 	switch (*s)
 	{
 	case 'h':
-		i = params->h_modifier = 1;
+		i = params->h_mod = 1;
 		break;
 	case 'l':
-		i = params->l_modifier = 1;
+		i = params->l_mod = 1;
 		break;
 	}
 	return (i);
@@ -119,7 +119,7 @@ char *get_width(char *s, params_t *params, va_list ce)
 	}
 	else
 	{
-		while (_isdigit(*s))
+		while (chrisdigit(*s))
 			d = d * 10 + (*s++ - '0');
 	}
 	params->width = d;
