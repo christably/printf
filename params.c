@@ -1,11 +1,11 @@
 #include "main.h"
 /**
- * init_params - clears n reset buf
+ * chris_params - clears n reset buf
  * @params: params struct
- * @ap: args pointer
+ * @ce: args pointer
  * Return: void
  */
-void init_params(params_t *params, va_list ap)
+void chris_params(params_t *params, va_list ce)
 {
 	params->unsign = 0;
 
@@ -20,5 +20,5 @@ void init_params(params_t *params, va_list ap)
 
 	params->h_modifier = 0;
 	params->l_modifier = 0;
-	(void)ap;
+	(void)ce;
 }
