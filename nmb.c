@@ -2,12 +2,12 @@
 /**
  * convert - func converter
  * @num: number
- * @base: base
- * @flags: args flags
+ * @b: base
+ * @f: args flags
  * @params: params struct
  * Return: string
  */
-char *convert(long int num, int base, int flags, params_t *params)
+char *convert(long int num, int b, int f, params_t *params)
 {
 	static char *array;
 	static char buffer[50];
@@ -16,19 +16,19 @@ char *convert(long int num, int base, int flags, params_t *params)
 	unsigned long n = num;
 	(void)params;
 
-	if (!(flags & CONVERT_UNSIGNED) && num < 0)
+	if (!(f & CONVERT_UNSIGNED) && num < 0)
 	{
 		n = -num;
 		sign = '-';
 
 	}
-	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+	array = f & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
 
 	do	{
-		*--ptr = array[n % base];
-		n /= base;
+		*--ptr = array[n % b];
+		n /= b;
 	} while (n != 0);
 
 	if (sign)
@@ -36,33 +36,33 @@ char *convert(long int num, int base, int flags, params_t *params)
 	return (ptr);
 }
 /**
- * print_unsigned - print unsigned ints
- * @ap: args pointer
+ * _unsigned - print unsigned ints
+ * @ce: args pointer
  * @params: params struct
  * Return: bytes printed
  */
-int print_unsigned(va_list ap, params_t *params)
+int _unsigned(va_list ce, params_t *params)
 {
 	unsigned long l;
 
-	if (params->l_modifier)
-		l = (unsigned long)va_arg(ap, unsigned long);
-	else if (params->h_modifier)
-		l = (unsigned short int)va_arg(ap, unsigned int);
+	if (params->l_mod)
+		l = (unsigned long)va_arg(ce, unsigned long);
+	else if (params->h_mod)
+		l = (unsigned short int)va_arg(ce, unsigned int);
 	else
-		l = (unsigned int)va_arg(ap, unsigned int);
+		l = (unsigned int)va_arg(ce, unsigned int);
 	params->unsign = 1;
 	return (print_number(convert(l, 10, CONVERT_UNSIGNED, params), params));
 }
 /**
- * print_address - prints address
- * @ap: args pointer
+ * print_add - prints address
+ * @ce: args pointer
  * @params: params struct
  * Return: bytes printed
  */
-int print_address(va_list ap, params_t *params)
+int print_add(va_list ce, params_t *params)
 {
-	unsigned long int n = va_arg(ap, unsigned long int);
+	unsigned long int n = va_arg(ce, unsigned long int);
 	char *str;
 
 	if (!n)
