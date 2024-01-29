@@ -1,19 +1,19 @@
 #include "main.h"
 /**
- * print_hex - for unsigned hex in lowercase
+ * hex_print - for unsigned hex in lowercase
  * @ce: args pointer
  * @params: params struct
  * Return: bytes printed
  */
-int print_hex(va_list ce, params_t *params)
+int hex_print(va_list ce, params_t *params)
 {
 	unsigned long l;
 	int c = 0;
 	char *str;
 
-	if (params->l_modifier)
+	if (params->l_mod)
 		l = (unsigned long)va_arg(ce, unsigned long);
-	else if (params->h_modifier)
+	else if (params->h_mod)
 		l = (unsigned short int)va_arg(ce, unsigned int);
 	else
 		l = (unsigned int)va_arg(ce, unsigned int);
@@ -39,9 +39,9 @@ int print_HEX(va_list ce, params_t *params)
 	int c = 0;
 	char *str;
 
-	if (params->l_modifier)
+	if (params->l_mod)
 		l = (unsigned long)va_arg(ce, unsigned long);
-	else if (params->h_modifier)
+	else if (params->h_mod)
 		l = (unsigned short int)va_arg(ce, unsigned int);
 	else
 		l = (unsigned int)va_arg(ce, unsigned int);
@@ -73,20 +73,20 @@ int print_binary(va_list ce, params_t *params)
 	return (c += print_number(str, params));
 }
 /**
- * print_octal - prints unsigned octals
+ * oct_print - prints unsigned octals
  * @ce: args pointer
  * @params: params struct
  * Return: bytes printed
  */
-int print_octal(va_list ce, params_t *params)
+int oct_print(va_list ce, params_t *params)
 {
 	unsigned long l;
 	char *str;
 	int c = 0;
 
-	if (params->l_modifier)
+	if (params->l_mod)
 		l = (unsigned long)va_arg(ce, unsigned long);
-	else if (params->h_modifier)
+	else if (params->h_mod)
 		l = (unsigned short int)va_arg(ce, unsigned int);
 	else
 		l = (unsigned int)va_arg(ce, unsigned int);
