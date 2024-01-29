@@ -73,9 +73,9 @@ int print_unsigned(va_list ce, params_t *params);
 int print_address(va_list ce, params_t *params);
 
 /* spec.c module */
-int (*get_specifier(char *s))(va_list ce, params_t *params);
-int get_print_func(char *s, va_list ce, params_t *params);
-int get_flag(char *s, params_t *params);
+int (*spec_get(char *s))(va_list ce, params_t *params);
+int printf_get(char *s, va_list ce, params_t *params);
+int f_get(char *s, params_t *params);
 int get_modifier(char *s, params_t *params);
 char *get_width(char *s, params_t *params, va_list ce);
 
@@ -86,19 +86,19 @@ int print_binary(va_list ce, params_t *params);
 int print_octal(va_list ce, params_t *params);
 
 /* sprint.c module */
-int print_from_to(char *start, char *stop, char *except);
-int print_rev(va_list ce, params_t *params);
-int print_rot13(va_list ce, params_t *params);
+int print_ft(char *st, char *sp, char *et);
+int print_v(va_list ce, params_t *params);
+int print_rt(va_list ce, params_t *params);
 
 /* nump.c module */
-int _isdigit(int c);
+int chrisdigit(int c);
 int _strlen(char *s);
 int print_number(char *str, params_t *params);
-int print_number_right_shift(char *str, params_t *params);
-int print_number_left_shift(char *str, params_t *params);
+int print_rs(char *str, params_t *params);
+int print_ls(char *str, params_t *params);
 
 /* params.c module */
-void init_params(params_t *params, va_list ce);
+void chris_params(params_t *params, va_list ce);
 
 /* strfd.c modoule */
 char *get_precision(char *p, params_t *params, va_list ce);
