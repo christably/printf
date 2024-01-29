@@ -64,7 +64,7 @@ int print_rs(char *str, params_t *params)
 	if (params->z_flag && !params->m_flag)
 		pad_char = '0';
 	neg = neg2 = (!params->unsign && *str == '-');
-	if (neg && i < params->width && pad_char == '0' && !params->minus_flag)
+	if (neg && i < params->width && pad_char == '0' && !params->m_flag)
 		str++;
 	else
 		neg = 0;
