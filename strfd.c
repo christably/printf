@@ -15,12 +15,12 @@ char *get_precision(char *p, params_t *params, va_list ce)
 	p++;
 	if (*p == '*')
 	{
-		d = va_arg(ap, int);
+		d = va_arg(ce, int);
 		p++;
 	}
 	else
 	{
-		while (_isdigit(*p))
+		while (chrisdigit(*p))
 			d = d * 10 + (*p++ - '0');
 	}
 	params->precision = d;
