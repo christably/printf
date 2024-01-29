@@ -3,10 +3,10 @@
  * get_precision - gets precision
  * @p: format string
  * @params: params struct
- * @ap: args pointer
+ * @ce: args pointer
  * Return: new pointer
  */
-char *get_precision(char *p, params_t *params, va_list ap)
+char *get_precision(char *p, params_t *params, va_list ce)
 {
 	int d = 0;
 
