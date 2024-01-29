@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	for (p = (char *)format; *p; p++)
 	{
-		init_params(&params, ce);
+		chris_params(&params, ce);
 		if (*p != '%')
 		{
 			sum += _putchar(*p);
@@ -36,8 +36,8 @@ int _printf(const char *format, ...)
 		if (get_modifier(p, &params))
 			p++;
 		if (!spec_get(p))
-			sum += printft(start, p,
-				params.l_modifier || params.h_modifier ? p - 1 : 0);
+			sum += print_ft(start, p,
+				params.l_mod || params.h_mod ? p - 1 : 0);
 		else
 			sum += printf_get(p, ce, &params);
 	}
