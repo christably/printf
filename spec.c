@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * get_specifier - finds format func
+ * spec_get - finds format func
  * @s: format string
  * Return: bytes printed
  */
-int (*get_specifier(char *s))(va_list ap, params_t *params)
+int (*spec_get(char *s))(va_list ce, params_t *params)
 {
 	specifier_t specifiers[] = {
 		{"c", print_char},
@@ -36,46 +36,46 @@ int (*get_specifier(char *s))(va_list ap, params_t *params)
 	return (NULL);
 }
 /**
- * get_print_func - finds format func
+ * printf_get - finds format func
  * @s: format string
- * @ap: args pointer
+ * @ce: args pointer
  * @params: params struct
  * Return: num of bytes printed
  */
-int get_print_func(char *s, va_list ap, params_t *params)
+int printf_get(char *s, va_list ce, params_t *params)
 {
 	int (*f)(va_list, params_t *) = get_specifier(s);
 
 	if (f)
-		return (f(ap, params));
+		return (f(ce, params));
 	return (0);
 }
 /**
- * get_flag - finds the flag func
+ * f_get - finds the flag func
  * @s: format string
  * @params: the params struct
  * Return: if flag was valid
  */
-int get_flag(char *s, params_t *params)
+int f_get(char *s, params_t *params)
 {
 	int i = 0;
 
 	switch (*s)
 	{
 		case '+':
-			i = params->plus_flag = 1;
+			i = params->p_flag = 1;
 			break;
 		case ' ':
-			i = params->space_flag = 1;
+			i = params->s_flag = 1;
 			break;
 		case '#':
-			i = params->hashtag_flag = 1;
+			i = params->h_flag = 1;
 			break;
 		case '-':
-			i = params->minus_flag = 1;
+			i = params->m_flag = 1;
 			break;
 		case '0':
-			i = params->zero_flag = 1;
+			i = params->z_flag = 1;
 			break;
 	}
 	return (i);
@@ -105,16 +105,16 @@ int get_modifier(char *s, params_t *params)
  * get_width - from format string
  * @s: format string
  * @params: params struct
- * @ap: the arg pointer
+ * @ce: the arg pointer
  * Return: new pointer
  */
-char *get_width(char *s, params_t *params, va_list ap)
+char *get_width(char *s, params_t *params, va_list ce)
 {
 	int d = 0;
 
 	if (*s == '*')
 	{
-		d = va_arg(ap, int);
+		d = va_arg(ce, int);
 		s++;
 	}
 	else
