@@ -19,14 +19,14 @@
  * @minus_flag: for _flag
  * @width: field width
  * @precision: field precision
- * @h_modifier: for h_modifier
- * @l_modifier: for l_modifier
+ * @h_mod: for h_modifier
+ * @l_mod: for l_modifier
  * struct parameters - params struct
  * @unsign: when value is unsigned flag
- * @plus_flag: for plus_flag
- * @space_flag: for hashtag_flag
- * @hashtag_flag: for _flag
- * @zero_flag: for _flag
+ * @p_flag: for plus_flag
+ * @s_flag: for hashtag_flag
+ * @h_flag: for _flag
+ * @z_flag: for _flag
  */
 typedef struct parameters
 {
@@ -68,9 +68,9 @@ int print_percent(va_list ce, params_t *params);
 int print_S(va_list ce, params_t *params);
 
 /* nmb.c module */
-char *convert(long int num, int base, int flags, params_t *params);
-int print_unsigned(va_list ce, params_t *params);
-int print_address(va_list ce, params_t *params);
+char *convert(long int num, int b, int f, params_t *params);
+int _unsigned(va_list ce, params_t *params);
+int print_add(va_list ce, params_t *params);
 
 /* spec.c module */
 int (*spec_get(char *s))(va_list ce, params_t *params);
@@ -80,10 +80,10 @@ int get_modifier(char *s, params_t *params);
 char *get_width(char *s, params_t *params, va_list ce);
 
 /* numc.c module */
-int print_hex(va_list ce, params_t *params);
+int hex_print(va_list ce, params_t *params);
 int print_HEX(va_list ce, params_t *params);
 int print_binary(va_list ce, params_t *params);
-int print_octal(va_list ce, params_t *params);
+int oct_print(va_list ce, params_t *params);
 
 /* sprint.c module */
 int print_ft(char *st, char *sp, char *et);
