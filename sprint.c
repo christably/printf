@@ -1,33 +1,33 @@
 #include "main.h"
 /**
- * print_from_to - prints char add
- * @start: begining add
- * @stop: ending add
- * @except: except add
+ * print_ft - prints char add
+ * @st: begining add
+ * @sp: ending add
+ * @et: except add
  * Return: number bytes printed
  */
-int print_from_to(char *start, char *stop, char *except)
+int print_ft(char *st, char *sp, char *et)
 {
 	int sum = 0;
 
-	while (start <= stop)
+	while (st <= sp)
 	{
-		if (start != except)
-			sum += _putchar(*start);
-		start++;
+		if (st != et)
+			sum += _putchar(*st);
+		st++;
 	}
 	return (sum);
 }
 /**
- * print_rev - prints string in reverse
- * @ap: string
+ * print_v - prints string in reverse
+ * @ce: string
  * @params: params struct
  * Return: bytes printed
  */
-int print_rev(va_list ap, params_t *params)
+int print_v(va_list ce, params_t *params)
 {
 	int len, sum = 0;
-	char *str = va_arg(ap, char *);
+	char *str = va_arg(ce, char *);
 	(void)params;
 
 	if (str)
@@ -41,18 +41,18 @@ int print_rev(va_list ap, params_t *params)
 	return (sum);
 }
 /**
- * print_rot13 - prints string
- * @ap: string
+ * print_rt - prints string
+ * @ce: string
  * @params: params struct
  * Return: number bytes printed
  */
-int print_rot13(va_list ap, params_t *params)
+int print_rt(va_list ce, params_t *params)
 {
 	int i, index;
 	int count = 0;
 	char arr[] =
 		"NOPQRSTUVWXYZABCDEFGHIJKLM      nopqrstuvwxyzabcdefghijklm";
-	char *a = va_arg(ap, char *);
+	char *a = va_arg(ce, char *);
 	(void)params;
 
 	i = 0;
