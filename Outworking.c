@@ -1,1 +1,0 @@
-printf question 6
